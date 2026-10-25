@@ -1,0 +1,231 @@
+/* NovaTech global theme: dark gradient by default, with a persistent light mode. */
+:root {
+  color-scheme: dark;
+  --background-color: #080b0a;
+  --default-color: #e7eee9;
+  --heading-color: #f4fff7;
+  --accent-color: #21c56b;
+  --surface-color: rgba(19, 28, 24, .92);
+  --contrast-color: #07110b;
+  --nav-color: #f1f6f2;
+  --nav-hover-color: #25d477;
+  --nav-mobile-background-color: #101713;
+  --nav-dropdown-background-color: #101713;
+  --nav-dropdown-color: #eaf2ec;
+  --nav-dropdown-hover-color: #25d477;
+  --novatech-border: rgba(87, 220, 139, .19);
+  --novatech-muted: #aab8af;
+}
+html { background: #080b0a; }
+body {
+  background: radial-gradient(ellipse at 12% 0%, rgba(16, 92, 49, .25), transparent 36%),
+              radial-gradient(ellipse at 95% 28%, rgba(112, 20, 32, .15), transparent 32%),
+              linear-gradient(145deg, #070908 0%, #0b110e 48%, #101512 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--default-color) !important;
+  transition: background .25s ease, color .25s ease;
+}
+body, main, section, .section, .container, .container-fluid { --bs-body-color: var(--default-color); }
+section, .section, .light-background, .dark-background {
+  background-color: transparent !important;
+  color: var(--default-color) !important;
+}
+.light-background, .dark-background {
+  background-image: linear-gradient(135deg, rgba(10, 17, 13, .76), rgba(15, 22, 18, .88)) !important;
+}
+#header, .header, #footer, .footer, footer {
+  background: rgba(6, 9, 7, .94) !important;
+  color: var(--default-color) !important;
+  border-color: var(--novatech-border) !important;
+}
+.header { backdrop-filter: blur(14px); }
+.header .logo h1, .header .sitename, .header a, .navmenu a { color: var(--nav-color); }
+.navmenu a:hover, .navmenu .active, .navmenu li:hover > a { color: var(--nav-hover-color) !important; }
+.navmenu .dropdown ul { background: var(--nav-dropdown-background-color) !important; border: 1px solid var(--novatech-border); }
+.navmenu .dropdown ul a { color: var(--nav-dropdown-color) !important; }
+h1, h2, h3, h4, h5, h6, .section-title h2, .service-item h4 a { color: var(--heading-color) !important; }
+p, li, label, small, .section-title p { color: var(--default-color); }
+.text-muted, .text-secondary { color: var(--novatech-muted) !important; }
+a { color: var(--accent-color); }
+a:hover { color: #ff5361; }
+.card, .service-item, .portfolio-info, .portfolio-wrap, .info-item, .contact .info-item,
+.pricing-item, .testimonial-item, .blog-post, .blog-comments, .comment-form, .php-email-form,
+.faq-container .faq-item, .team-member, .member-info, .features .feature-item,
+.services .service-item, .steps .step-item, .work-process .step-item {
+  background: linear-gradient(145deg, rgba(20, 30, 24, .94), rgba(12, 18, 14, .96)) !important;
+  color: var(--default-color) !important;
+  border: 1px solid var(--novatech-border);
+  border-radius: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .17);
+}
+input:not([type="checkbox"]):not([type="radio"]), textarea, select, .form-control {
+  color: var(--default-color) !important;
+  background: rgba(5, 10, 7, .72) !important;
+  border-color: rgba(151, 174, 158, .3) !important;
+}
+input::placeholder, textarea::placeholder, .form-control::placeholder { color: #98a79d !important; }
+input:focus, textarea:focus, select:focus, .form-control:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 .2rem rgba(33, 197, 107, .14) !important;
+}
+button, .btn, input[type="submit"], .php-email-form button, .cta-btn, .read-more {
+  transition: transform .2s ease, filter .2s ease, background .2s ease;
+}
+button:hover, .btn:hover, input[type="submit"]:hover, .cta-btn:hover { transform: translateY(-1px); }
+.btn-primary, .cta-btn, .php-email-form button, input[type="submit"] {
+  background: linear-gradient(110deg, #159447, #25cf70) !important;
+  color: #06110a !important;
+  border: 0 !important;
+}
+.btn-danger { background: linear-gradient(110deg, #a9162a, #ef394a) !important; color: #fff !important; }
+.icon, .service-item .icon, .section-title .title { color: var(--accent-color) !important; }
+hr, .border, .border-top, .border-bottom { border-color: var(--novatech-border) !important; }
+#preloader { background: #080b0a !important; }
+
+/* Accessible theme switch */
+#novatech-theme-toggle {
+  position: fixed; right: 20px; bottom: 20px; z-index: 99999;
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 15px; border: 1px solid rgba(80, 218, 132, .45); border-radius: 999px;
+  background: rgba(13, 22, 16, .95); color: #f1fff5; font: 600 13px/1.2 inherit;
+  box-shadow: 0 8px 28px rgba(0,0,0,.32); cursor: pointer; backdrop-filter: blur(12px);
+}
+#novatech-theme-toggle:hover { transform: translateY(-2px); border-color: #27d477; }
+#novatech-theme-toggle .theme-icon { font-size: 16px; line-height: 1; }
+#novatech-theme-toggle:focus-visible { outline: 3px solid #f04452; outline-offset: 3px; }
+
+/* Light mode */
+html[data-theme="light"] { color-scheme: light; background: #f4f7f5; }
+html[data-theme="light"] body {
+  --background-color: #f4f7f5; --default-color: #26332b; --heading-color: #111d15;
+  --accent-color: #128744; --surface-color: rgba(255,255,255,.96); --contrast-color: #fff;
+  --nav-color: #17241b; --nav-hover-color: #128744; --nav-mobile-background-color: #fff;
+  --nav-dropdown-background-color: #fff; --nav-dropdown-color: #26332b; --nav-dropdown-hover-color: #128744;
+  --novatech-border: rgba(24, 112, 61, .16); --novatech-muted: #5f6d63;
+  background: radial-gradient(ellipse at 12% 0%, rgba(34, 177, 91, .10), transparent 36%),
+              radial-gradient(ellipse at 95% 28%, rgba(220, 45, 62, .055), transparent 32%),
+              linear-gradient(145deg, #f8fbf8 0%, #edf3ef 52%, #f7f8f7 100%) !important;
+  color: var(--default-color) !important;
+}
+html[data-theme="light"] .light-background, html[data-theme="light"] .dark-background {
+  background-image: linear-gradient(135deg, rgba(255,255,255,.83), rgba(239,246,241,.94)) !important;
+}
+html[data-theme="light"] #header, html[data-theme="light"] .header,
+html[data-theme="light"] #footer, html[data-theme="light"] .footer, html[data-theme="light"] footer {
+  background: rgba(250, 253, 250, .94) !important; color: var(--default-color) !important;
+}
+html[data-theme="light"] .card, html[data-theme="light"] .service-item,
+html[data-theme="light"] .portfolio-info, html[data-theme="light"] .portfolio-wrap,
+html[data-theme="light"] .info-item, html[data-theme="light"] .contact .info-item,
+html[data-theme="light"] .pricing-item, html[data-theme="light"] .testimonial-item,
+html[data-theme="light"] .blog-post, html[data-theme="light"] .blog-comments,
+html[data-theme="light"] .comment-form, html[data-theme="light"] .php-email-form,
+html[data-theme="light"] .faq-container .faq-item, html[data-theme="light"] .team-member,
+html[data-theme="light"] .member-info, html[data-theme="light"] .features .feature-item,
+html[data-theme="light"] .services .service-item, html[data-theme="light"] .steps .step-item,
+html[data-theme="light"] .work-process .step-item {
+  background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(242,248,244,.98)) !important;
+  color: var(--default-color) !important; box-shadow: 0 10px 30px rgba(17, 48, 28, .07);
+}
+html[data-theme="light"] input:not([type="checkbox"]):not([type="radio"]),
+html[data-theme="light"] textarea, html[data-theme="light"] select,
+html[data-theme="light"] .form-control { color: #26332b !important; background: #fff !important; }
+html[data-theme="light"] #novatech-theme-toggle { background: rgba(255,255,255,.96); color: #17241b; }
+html[data-theme="light"] #preloader { background: #f4f7f5 !important; }
+@media (max-width: 575px) { #novatech-theme-toggle { right: 12px; bottom: 12px; padding: 10px 12px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+/* Light-mode readability patch: override template components that carry dark-theme colors. */
+html[data-theme="light"] body,
+html[data-theme="light"] main,
+html[data-theme="light"] section,
+html[data-theme="light"] .section,
+html[data-theme="light"] .content,
+html[data-theme="light"] .container,
+html[data-theme="light"] .container-fluid {
+  color: #26332b !important;
+}
+html[data-theme="light"] section,
+html[data-theme="light"] .section,
+html[data-theme="light"] .light-background,
+html[data-theme="light"] .dark-background {
+  color: #26332b !important;
+}
+html[data-theme="light"] h1, html[data-theme="light"] h2,
+html[data-theme="light"] h3, html[data-theme="light"] h4,
+html[data-theme="light"] h5, html[data-theme="light"] h6,
+html[data-theme="light"] .section-title h2,
+html[data-theme="light"] .content h1,
+html[data-theme="light"] .content h2,
+html[data-theme="light"] .content h3,
+html[data-theme="light"] .content h4,
+html[data-theme="light"] .content h5,
+html[data-theme="light"] .content h6 {
+  color: #142219 !important;
+}
+html[data-theme="light"] p, html[data-theme="light"] li,
+html[data-theme="light"] label, html[data-theme="light"] small,
+html[data-theme="light"] span:not(.theme-icon),
+html[data-theme="light"] .section-title p,
+html[data-theme="light"] .description,
+html[data-theme="light"] .post-excerpt,
+html[data-theme="light"] .entry-content,
+html[data-theme="light"] .entry-content p,
+html[data-theme="light"] .blog-author .post-author,
+html[data-theme="light"] .portfolio-description p {
+  color: #34443a;
+}
+html[data-theme="light"] a:not(.btn):not(.cta-btn):not(.nav-link) { color: #117a3d; }
+html[data-theme="light"] a:not(.btn):not(.cta-btn):not(.nav-link):hover { color: #b51f32; }
+html[data-theme="light"] .header a,
+html[data-theme="light"] .header .logo h1,
+html[data-theme="light"] .header .sitename,
+html[data-theme="light"] .navmenu a,
+html[data-theme="light"] .navmenu .dropdown ul a { color: #17241b !important; }
+html[data-theme="light"] .navmenu a:hover,
+html[data-theme="light"] .navmenu .active,
+html[data-theme="light"] .navmenu li:hover > a { color: #128744 !important; }
+html[data-theme="light"] .btn-primary,
+html[data-theme="light"] .cta-btn,
+html[data-theme="light"] .php-email-form button,
+html[data-theme="light"] input[type="submit"] { color: #fff !important; }
+html[data-theme="light"] .btn-secondary { color: #17241b !important; background: #e7eee9 !important; }
+html[data-theme="light"] .badge, html[data-theme="light"] .post-category { color: #fff; }
+html[data-theme="light"] .breadcrumb,
+html[data-theme="light"] .breadcrumb a,
+html[data-theme="light"] .meta,
+html[data-theme="light"] .post-meta,
+html[data-theme="light"] .post-date,
+html[data-theme="light"] .entry-meta { color: #536258 !important; }
+html[data-theme="light"] .table,
+html[data-theme="light"] table,
+html[data-theme="light"] .table th,
+html[data-theme="light"] .table td { color: #26332b !important; border-color: #d7e2da !important; }
+html[data-theme="light"] .dropdown-menu,
+html[data-theme="light"] .list-group-item,
+html[data-theme="light"] .accordion-item,
+html[data-theme="light"] .accordion-button,
+html[data-theme="light"] .modal-content,
+html[data-theme="light"] .offcanvas,
+html[data-theme="light"] .popover,
+html[data-theme="light"] .tooltip-inner {
+  background-color: #fff !important; color: #26332b !important; border-color: #d7e2da !important;
+}
+html[data-theme="light"] .accordion-button:not(.collapsed) { color: #117a3d !important; background: #edf7f0 !important; }
+html[data-theme="light"] .text-white,
+html[data-theme="light"] .text-light { color: #26332b !important; }
+html[data-theme="light"] .bg-dark,
+html[data-theme="light"] .bg-black { background-color: #edf3ef !important; }
+html[data-theme="light"] .form-control:focus,
+html[data-theme="light"] input:focus,
+html[data-theme="light"] textarea:focus,
+html[data-theme="light"] select:focus { color: #26332b !important; background: #fff !important; }
+html[data-theme="light"] .form-control:disabled,
+html[data-theme="light"] .form-control[readonly] { background: #eef2ef !important; color: #536258 !important; }
+html[data-theme="light"] .pagination .page-link { background: #fff; color: #117a3d; border-color: #d7e2da; }
+html[data-theme="light"] .pagination .active .page-link { background: #128744; color: #fff; border-color: #128744; }
+html[data-theme="light"] .footer a { color: #117a3d !important; }
+html[data-theme="light"] .footer p,
+html[data-theme="light"] .footer li,
+html[data-theme="light"] .footer h4,
+html[data-theme="light"] .footer h5 { color: #26332b !important; }
